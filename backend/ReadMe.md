@@ -1,4 +1,4 @@
-# Backend API - Sophie Bluel
+# Backend API - Mon vieux grimoire
 
 Ce repo contient le code backend pour le site Mon Vieux Grimoire
 

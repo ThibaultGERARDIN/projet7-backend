@@ -1,3 +1,4 @@
+const { isMainThread } = require('worker_threads')
 const Book = require('../models/Book')
 const fs = require('fs')
 
@@ -107,7 +108,8 @@ exports.addRating = (req, res, next) => {
         (sum, rating) => sum + rating.grade,
         0,
       )
-      const averageRating = sumOfRatings / numberOfRatings
+      const averageRating =
+        Math.round((sumOfRatings / numberOfRatings) * 10) / 10
       book.averageRating = averageRating
 
       book
