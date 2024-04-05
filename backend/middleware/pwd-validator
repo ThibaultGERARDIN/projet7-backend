@@ -1,5 +1,7 @@
 const passwordValidator = require('password-validator')
 
+
+//  Fonction de validation du mdp : vérifie qu'il répond aux critères renseignés (longeur, majuscule, caracteres spéciaux, chiffres)
 const validatePassword = (req, res, next) => {
   const userPassword = req.body.password
 

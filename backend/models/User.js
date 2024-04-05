@@ -7,6 +7,8 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
 })
 
+
+// Vérifie que l'email renseigné n'est pas déjà dans la DB
 userSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model('User', userSchema)

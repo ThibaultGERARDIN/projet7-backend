@@ -1,5 +1,7 @@
 const emailValidator = require('email-validator')
 
+
+// Fonction de validation d'email (vérifie que la chaine de caractère correspond à une adresse mail)
 const validateEmail = (req, res, next) => {
   const { email } = req.body
 

@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
+
+// Fonction de création d'un utilisateur
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
@@ -18,12 +20,16 @@ exports.signup = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }))
 }
 
+
+// Fonction de login d'un utilisateur existant
 exports.login = (req, res, next) => {
+  // Cherche si un utilisateur avec cet email existe
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (user === null) {
         res.status(401).json({ message: 'Paire login/mdp incorrecte' })
       } else {
+        // Si l'email existe, vérifie que le mdp est correct
         bcrypt
           .compare(req.body.password, user.password)
           .then((valid) => {
